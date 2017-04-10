@@ -5,16 +5,17 @@ var webpack = require('webpack'),
 
 module.exports = {
     entry: {
-        main: path.join(__dirname, 'src/main.js'),
-        test: path.join(__dirname, 'src/test.js')
+        main: path.join(__dirname, 'src/pages/main/main.js')
     },
     output: {
         path: path.join(__dirname, 'dist'),
-        publicPath: './',
         filename: 'js/[name].js'
     },
     module: {
         rules: [{
+            test: /\.js$/,
+            use: 'babel-loader'
+        }, {
             test: /\.(png|jpg|gif)$/,
             use: 'url-loader?limit=8192&name=./images/[hash].[ext]'
         }, {
@@ -35,7 +36,7 @@ module.exports = {
             name: 'vendors'
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/index.html'),
+            template: path.join(__dirname, 'src/pages/main/index.html'),
             filename: 'index.html',
             inject: true,
             hash: true

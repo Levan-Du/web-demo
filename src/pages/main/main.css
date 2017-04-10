@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 .5rem;
+}
+
+li {
+    width: 32%;
+    border: solid 1px #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: baseline;
+    margin: .5rem 0;
+}
+
+@media(max-width: 640px) {
+    li {
+        width: 48%;
+    }
+}
+
+li .img-box {
+    display: block;
+    width: 100%;
+}
+
+li img {
+    display: block;
+    width: 100%;
+}
+
+li p.info {
+    height: 4rem;
+    align-self: flex-end;
+}
