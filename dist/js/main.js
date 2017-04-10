@@ -9879,17 +9879,52 @@ module.exports = function (module) {
 
 __webpack_require__(1);
 
-var data = [];
-for (var i = 1; i <= 100; i++) {
-				data.push(i);
+function fit() {
+    console.log($('html').css('fontSize'));
+    var winWdith = $(window).width();
+    if (winWdith < 640) {
+        $('html').css('fontSize', 16);
+    } else if (winWdith < 1000) {
+        $('html').css('fontSize', 20);
+    } else {
+        $('html').css('fontSize', 30);
+    }
 }
 
-$(document).ready(function () {
-				var html = data.map(function (el) {
-								return '\n<li>\n\t<img src="/images/00' + el + '.jpg" />\n\t<p>Macbook 2013\u6B3E</p>\n\t<i>\uFFE56300.00<i>\n\t<a>\u52A0\u5165\u8D2D\u7269\u8F66</a>\n\t<a>\u7ACB\u5373\u5151\u6362</a>\n</li>\n\t';
-				}).join('');
-				$('list1').append(html);
+$(function (e) {
+    fit();
+
+    var data = [];
+    for (var i = 1; i <= 100; i++) {
+        data.push(i);
+    }
+
+    var html = data.map(function (el) {
+        return '\n<li>\n\t<a class="img-box">\n\t\t<img src="/images/00' + (el % 5 + 1) + '.jpg" />\n\t</a>\n\t<p class="info">\n\t\t<span>Macbook 2013\u6B3E</span>\n\t\t<i>\uFFE56300.00</i>\n\t\t<a>\u52A0\u5165\u8D2D\u7269\u8F66</a>\n\t\t<a>\u7ACB\u5373\u5151\u6362</a>\n\t</p>\n</li>\n\t';
+    }).join('');
+
+    $('#list1').append(html);
+
+    // calc();
 });
+
+function calc() {
+    var winWdith = $(window).width(),
+        splitnum = 2,
+        itemWidth = 0;
+
+    if (winWdith < 640) {
+        splitnum = 2;
+    } else {
+        splitnum = 3;
+    }
+
+    itemWidth = winWdith / splitnum;
+
+    $('#list1').width(itemWidth);
+    $('#list1 .img-box').width(itemWidth);
+    $('#list1 .img-box').height(itemWidth);
+}
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })

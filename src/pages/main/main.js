@@ -25,12 +25,12 @@ $(function(e) {
 	<a class="img-box">
 		<img src="/images/00${el%5+1}.jpg" />
 	</a>
-	<p class="info">
-		<span>Macbook 2013款</span>
-		<span>￥6300.00</span>
-		<a>加入购物车</a>
+	<section class="info">
+		<p>Macbook 2013款</p>
+		<p>￥6300.00</p>
+		<a>加入</a>
 		<a>立即兑换</a>
-	</p>
+	</section>
 </li>
 	`).join('');
 
