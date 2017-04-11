@@ -1,7 +1,15 @@
 var webpack = require('webpack'),
     path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    autoprefixer = require('autoprefixer');
+// var browsers = {
+//     browsers: [
+//         'last 10 Chrome versions',
+//         'last 5 Firefox versions',
+//         'Safari >= 6', 'ie > 8'
+//     ]
+// };
 
 module.exports = {
     entry: {
@@ -23,7 +31,7 @@ module.exports = {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: 'css-loader'
+                use: 'css-loader!postcss-loader'
             })
         }]
     },
@@ -45,7 +53,8 @@ module.exports = {
             inject: true,
             hash: true,
             chunks: ['index', 'vendors']
-        })
+        }),
+        autoprefixer
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),

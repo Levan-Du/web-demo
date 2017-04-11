@@ -15,7 +15,7 @@ __webpack_require__(4);
 $(function (e) {
     var mySwiper = new Swiper('.swiper-container', {
         loop: false,
-        Callbacks: function Callbacks(e) {
+        onSlideChangeEnd: function onSlideChangeEnd(e) {
             console.log(e);
         }
     });
