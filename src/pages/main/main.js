@@ -1,3 +1,4 @@
+import '../../commons/swiper-3.4.2.jquery.min';
 import './main.css';
 
 function fit() {

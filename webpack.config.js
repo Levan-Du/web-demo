@@ -5,6 +5,7 @@ var webpack = require('webpack'),
 
 module.exports = {
     entry: {
+        index: path.join(__dirname, 'src/pages/tab/tab.js'),
         main: path.join(__dirname, 'src/pages/main/main.js')
     },
     output: {
@@ -27,26 +28,28 @@ module.exports = {
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.ProvidePlugin({
+        //     $: 'jquery'
+        // }),
         new webpack.ProvidePlugin({
-            $: 'jquery'
+            $: 'n-zepto'
         }),
         new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors'
+            name: 'vendors',
+            minChunks: 2
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/main/index.html'),
+            template: path.join(__dirname, 'src/pages/tab/tab.html'),
             filename: 'index.html',
             inject: true,
-            hash: true
+            hash: true,
+            chunks: ['index', 'vendors']
         })
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         inline: true,
-        port: 8080,
-        historyApiFallback: true,
-        hot: true
+        port: 8080
     }
 }
