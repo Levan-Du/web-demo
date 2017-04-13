@@ -3,18 +3,12 @@ var webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     autoprefixer = require('autoprefixer');
-// var browsers = {
-//     browsers: [
-//         'last 10 Chrome versions',
-//         'last 5 Firefox versions',
-//         'Safari >= 6', 'ie > 8'
-//     ]
-// };
 
 module.exports = {
     entry: {
         index: path.join(__dirname, 'src/pages/tab/tab.js'),
-        main: path.join(__dirname, 'src/pages/main/main.js')
+        main: path.join(__dirname, 'src/pages/main/main.js'),
+        test: path.join(__dirname, 'src/pages/test/test.js')
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -48,11 +42,11 @@ module.exports = {
             minChunks: 2
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/tab/tab.html'),
+            template: path.join(__dirname, 'src/pages/test/test.html'),
             filename: 'index.html',
             inject: true,
             hash: true,
-            chunks: ['index', 'vendors']
+            chunks: ['test']
         }),
         autoprefixer
     ],
