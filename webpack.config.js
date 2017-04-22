@@ -6,7 +6,6 @@ var webpack = require('webpack'),
 
 module.exports = {
     entry: {
-        index: path.join(__dirname, 'src/pages/tab/tab.js'),
         main: path.join(__dirname, 'src/pages/main/main.js'),
         test: path.join(__dirname, 'src/pages/test/test.js')
     },
@@ -23,6 +22,7 @@ module.exports = {
             use: 'url-loader?limit=8192&name=./images/[hash].[ext]'
         }, {
             test: /\.css$/,
+            exclude: /node_modules/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: 'css-loader!postcss-loader'
@@ -30,16 +30,12 @@ module.exports = {
         }]
     },
     plugins: [
-        // new webpack.ProvidePlugin({
-        //     $: 'jquery'
-        // }),
         new webpack.ProvidePlugin({
             $: 'n-zepto'
         }),
         new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors',
-            minChunks: 2
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src/pages/test/test.html'),

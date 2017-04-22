@@ -1,48 +1,87 @@
-var ele = document.getElementsByClassName("img-box")[0];
-var beginX, beginY, endX, endY, swipeLeft, swipeRight;
-ele.addEventListener('touchstart', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    beginX = event.targetTouches[0].screenX;
-    beginY = event.targetTouches[0].screenY;
-    swipeLeft = false, swipeRight = false;
-});
+import 'animate.css';
+import './test.css';
 
-ele.addEventListener('touchmove', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    endX = event.targetTouches[0].screenX;
-    endY = event.targetTouches[0].screenY;
-    // 左右滑动
-    if (Math.abs(endX - beginX) - Math.abs(endY - beginY) > 0) {
-        /*向右滑动*/
-        if (endX - beginX > 0) {
-            swipeRight = true;
-            swipeLeft = false;
-        }
-        /*向左滑动*/
-        else {
-            swipeLeft = true;
-            swipeRight = false;
-        }
-    } else if (Math.abs(endX - beginX) - Math.abs(endY - beginY) < 0) {
-        // 上下滑动
-    }
-});
-ele.addEventListener('touchend', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
 
-    if (Math.abs(endX - beginX) - Math.abs(endY - beginY) > 0) {
-        event.stopPropagation();
-        event.preventDefault();
-        if (swipeRight) {
-            swipeRight = !swipeRight;
-            /*向右滑动*/
-        }
-        if (swipeLeft) {
-            swipeLeft = !swipeLeft;
-            /*向左滑动*/
-        }
-    }
-});
+window.onload = (e) => {
+    ['bounce',
+        'flash',
+        'pulse',
+        'rubberBand',
+        'shake',
+        'headShake',
+        'swing',
+        'tada',
+        'wobble',
+        'jello',
+        'bounceIn',
+        'bounceInDown',
+        'bounceInLeft',
+        'bounceInRight',
+        'bounceInUp',
+        'bounceOut',
+        'bounceOutDown',
+        'bounceOutLeft',
+        'bounceOutRight',
+        'bounceOutUp',
+        'fadeIn',
+        'fadeInDown',
+        'fadeInDownBig',
+        'fadeInLeft',
+        'fadeInLeftBig',
+        'fadeInRight',
+        'fadeInRightBig',
+        'fadeInUp',
+        'fadeInUpBig',
+        'fadeOut',
+        'fadeOutDown',
+        'fadeOutDownBig',
+        'fadeOutLeft',
+        'fadeOutLeftBig',
+        'fadeOutRight',
+        'fadeOutRightBig',
+        'fadeOutUp',
+        'fadeOutUpBig',
+        'flipInX',
+        'flipInY',
+        'flipOutX',
+        'flipOutY',
+        'lightSpeedIn',
+        'lightSpeedOut',
+        'rotateIn',
+        'rotateInDownLeft',
+        'rotateInDownRight',
+        'rotateInUpLeft',
+        'rotateInUpRight',
+        'rotateOut',
+        'rotateOutDownLeft',
+        'rotateOutDownRight',
+        'rotateOutUpLeft',
+        'rotateOutUpRight',
+        'hinge',
+        'rollIn',
+        'rollOut',
+        'zoomIn',
+        'zoomInDown',
+        'zoomInLeft',
+        'zoomInRight',
+        'zoomInUp',
+        'zoomOut',
+        'zoomOutDown',
+        'zoomOutLeft',
+        'zoomOutRight',
+        'zoomOutUp',
+        'slideInDown',
+        'slideInLeft',
+        'slideInRight',
+        'slideInUp',
+        'slideOutDown',
+        'slideOutLeft',
+        'slideOutRight',
+        'slideOutUp'
+    ]
+    .forEach((ele, i) => {
+        setTimeout(() => {
+            $('#ball').prop('class', ele);
+        }, 1000 * i);
+    });
+}
