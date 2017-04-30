@@ -1,4 +1,3 @@
-import 'animate.css';
 import './test.css';
 import 'avalon';
 

@@ -7,7 +7,7 @@ var webpack = require('webpack'),
 module.exports = {
     entry: {
         main: path.join(__dirname, 'src/pages/main/main.js'),
-        test: path.join(__dirname, 'src/pages/test/test.js')
+        test: path.join(__dirname, 'src/pages/Carousel/Carousel.js')
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -16,6 +16,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.js$/,
+            exclude: /node_modules/,
             use: 'babel-loader'
         }, {
             test: /\.(png|jpg|gif)$/,
@@ -31,13 +32,14 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery'
+                // $: 'n-zepto'
         }),
         new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors'
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/test/test.html'),
+            template: path.join(__dirname, 'src/pages/Carousel/Carousel.html'),
             filename: 'index.html',
             inject: true,
             hash: true,
