@@ -22,7 +22,6 @@ module.exports = {
             use: 'url-loader?limit=8192&name=./images/[hash].[ext]'
         }, {
             test: /\.css$/,
-            exclude: /node_modules/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: 'css-loader!postcss-loader'
@@ -31,18 +30,18 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: 'n-zepto'
+            $: 'jquery'
         }),
         new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors',
+            name: 'vendors'
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src/pages/test/test.html'),
             filename: 'index.html',
             inject: true,
             hash: true,
-            chunks: ['test']
+            chunks: ['test', 'vendors']
         }),
         autoprefixer
     ],
