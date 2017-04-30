@@ -36,7 +36,8 @@ module.exports = {
         }),
         new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendors'
+            name: 'vendors',
+            minChunks: 2
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src/pages/Carousel/Carousel.html'),

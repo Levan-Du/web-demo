@@ -1,5 +1,4 @@
 import './test.css';
-import 'avalon';
 
 $((e) => {
 
