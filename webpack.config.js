@@ -33,6 +33,15 @@ module.exports = {
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery'
+<<<<<<< HEAD
+=======
+                // $: 'n-zepto'
+        }),
+        new ExtractTextPlugin('css/[name].css?[contenthash]'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendors',
+            minChunks: 2
+>>>>>>> dafa1fa022783c54680a34867dab001b03c92ed8
         }),
         // new webpack.ProvidePlugin({
         //     $: 'n-zepto'
@@ -47,7 +56,7 @@ module.exports = {
             filename: 'index.html',
             inject: true,
             hash: true,
-            chunks: ['test']
+            chunks: ['test', 'vendors']
         }),
         autoprefixer
     ],

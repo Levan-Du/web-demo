@@ -9,38 +9,24 @@ body {
     padding: 0;
 }
 
-<<<<<<< HEAD
-.container {
-    width: 50%;
-=======
 .barner {
     position: relative;
     background: #ddd;
 }
 
 .container {
-    width: 80%;
->>>>>>> dafa1fa022783c54680a34867dab001b03c92ed8
+    width: 50%;
     margin: auto;
     overflow: hidden;
 }
 
-<<<<<<< HEAD
-.img-box {
-    width: 500%;
-=======
 .img-box {/*
     width: 1500%;
     margin-left: -100%;*/
     /*transform: translateX(-7.14%);*/
->>>>>>> dafa1fa022783c54680a34867dab001b03c92ed8
 }
 
 img {
     float: left;
-<<<<<<< HEAD
-    width: 20%;
-=======
     /*width: 7.14%;*/
->>>>>>> dafa1fa022783c54680a34867dab001b03c92ed8
 }
