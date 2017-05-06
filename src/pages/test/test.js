@@ -1,48 +1,17 @@
-var ele = document.getElementsByClassName("img-box")[0];
-var beginX, beginY, endX, endY, swipeLeft, swipeRight;
-ele.addEventListener('touchstart', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    beginX = event.targetTouches[0].screenX;
-    beginY = event.targetTouches[0].screenY;
-    swipeLeft = false, swipeRight = false;
-});
+import '../../commons/swiper-3.4.2.min.css';
+import './test.css';
+import '../../commons/swiper-3.4.2.jquery.min';
 
-ele.addEventListener('touchmove', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
-    endX = event.targetTouches[0].screenX;
-    endY = event.targetTouches[0].screenY;
-    // 左右滑动
-    if (Math.abs(endX - beginX) - Math.abs(endY - beginY) > 0) {
-        /*向右滑动*/
-        if (endX - beginX > 0) {
-            swipeRight = true;
-            swipeLeft = false;
-        }
-        /*向左滑动*/
-        else {
-            swipeLeft = true;
-            swipeRight = false;
-        }
-    } else if (Math.abs(endX - beginX) - Math.abs(endY - beginY) < 0) {
-        // 上下滑动
-    }
-});
-ele.addEventListener('touchend', function(event) {
-    event.stopPropagation();
-    event.preventDefault();
 
-    if (Math.abs(endX - beginX) - Math.abs(endY - beginY) > 0) {
-        event.stopPropagation();
-        event.preventDefault();
-        if (swipeRight) {
-            swipeRight = !swipeRight;
-            /*向右滑动*/
+$((e) => {
+    var mySwiper = new Swiper('#swiper1', {
+        // direction: 'vertical',
+        loop: true,
+
+        onSlideChangeEnd: (e) => {
+            console.log('end');
         }
-        if (swipeLeft) {
-            swipeLeft = !swipeLeft;
-            /*向左滑动*/
-        }
-    }
+    });
+
+    console.log(Swiper, mySwiper.slideTo);
 });

@@ -1,5 +1,6 @@
-import '../../commons/swiper-3.4.2.jquery.min';
+import '../../commons/swiper-3.4.2.min.css';
 import './main.css';
+import '../../commons/swiper-3.4.2.jquery.min';
 
 function fit() {
     console.log($('html').css('fontSize'));
